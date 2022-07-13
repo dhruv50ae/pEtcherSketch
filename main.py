@@ -1,33 +1,16 @@
 from turtle import Turtle, Screen
 
-rammus = Turtle()
 screen = Screen()
+screen.setup(height=400, width=500)
+userBet = screen.textinput(title="Who will win", prompt="Which turtle will win the race? Enter a colour: ")
+colours = ["red", "orange", "yellow", "green", "blue", "purple"]
 
-def moveFowards():
-    rammus.forward(10)
+yPositions = [-70, -40, -10, 20, 50, 80]
 
-def moveBackwards():
-    rammus.backward(10)
-
-def turnLeft():
-    newHeading = rammus.heading()+10
-    rammus.setheading(newHeading)
-
-def turnRight():
-    newHeading = rammus.heading()-10
-    rammus.setheading(newHeading)
-
-def clear():
-    rammus.clear()
+for turtleIndex in range(0, 6):
+    rammus = Turtle(shape="turtle")
+    rammus.color(colours[turtleIndex])
     rammus.penup()
-    rammus.home()
-    rammus.pendown()
+    rammus.goto(x=-240, y=yPositions[turtleIndex])
 
-
-screen.listen()
-screen.onkey(key="w", fun=moveFowards)
-screen.onkey(key="s", fun=moveBackwards)
-screen.onkey(key="a", fun=turnLeft)
-screen.onkey(key="d", fun=turnRight)
-screen.onkey(key="c", fun=clear)
 screen.exitonclick()
